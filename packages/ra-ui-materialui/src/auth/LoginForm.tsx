@@ -7,7 +7,6 @@ import {
     CircularProgress,
     TextField,
 } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useTranslate, useLogin, useNotify, useSafeSetState } from 'ra-core';
 
 interface Props {
@@ -18,24 +17,6 @@ interface FormData {
     username: string;
     password: string;
 }
-
-const useStyles = makeStyles(
-    (theme: Theme) => ({
-        form: {
-            padding: '0 1em 1em 1em',
-        },
-        input: {
-            marginTop: '1em',
-        },
-        button: {
-            width: '100%',
-        },
-        icon: {
-            marginRight: theme.spacing(1),
-        },
-    }),
-    { name: 'RaLoginForm' }
-);
 
 const Input = ({
     meta: { touched, error }, // eslint-disable-line react/prop-types
@@ -57,7 +38,6 @@ const LoginForm = (props: Props) => {
     const login = useLogin();
     const translate = useTranslate();
     const notify = useNotify();
-    const classes = useStyles(props);
 
     const validate = (values: FormData) => {
         const errors = { username: undefined, password: undefined };
@@ -106,8 +86,8 @@ const LoginForm = (props: Props) => {
             validate={validate}
             render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit} noValidate>
-                    <div className={classes.form}>
-                        <div className={classes.input}>
+                    <div className="pt-0 px-4 pb-4">
+                        <div className="mt-4">
                             <Field
                                 autoFocus
                                 id="username"
@@ -117,7 +97,7 @@ const LoginForm = (props: Props) => {
                                 disabled={loading}
                             />
                         </div>
-                        <div className={classes.input}>
+                        <div className="mt-4">
                             <Field
                                 id="password"
                                 name="password"
@@ -135,14 +115,10 @@ const LoginForm = (props: Props) => {
                             type="submit"
                             color="primary"
                             disabled={loading}
-                            className={classes.button}
+                            className="w-full"
                         >
                             {loading && (
-                                <CircularProgress
-                                    className={classes.icon}
-                                    size={18}
-                                    thickness={2}
-                                />
+                                <CircularProgress size={18} thickness={2} />
                             )}
                             {translate('ra.auth.sign_in')}
                         </Button>

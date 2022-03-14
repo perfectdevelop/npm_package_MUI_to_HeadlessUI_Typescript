@@ -80,15 +80,6 @@ export interface LoginProps
     title?: TitleComponent;
 }
 
-const useStyles = makeStyles(
-    (theme: Theme) => ({
-        icon: {
-            backgroundColor: theme.palette.secondary[500],
-        },
-    }),
-    { name: 'RaLogin' }
-);
-
 const LoginView: React.FunctionComponent<Omit<LoginProps, 'theme'>> = props => {
     const {
         title,
@@ -101,8 +92,6 @@ const LoginView: React.FunctionComponent<Omit<LoginProps, 'theme'>> = props => {
         ...rest
     } = props;
     const containerRef = useRef<HTMLDivElement>();
-
-    const classes = useStyles(props);
     const checkAuth = useCheckAuth();
     const history = useHistory();
     useEffect(() => {
