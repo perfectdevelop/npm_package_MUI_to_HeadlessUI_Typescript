@@ -18,52 +18,19 @@ const SwitchLanguage = forwardRef((props: MenuItemProps, ref) => {
     const setLocale = useSetLocale();
     const classes = useStyles();
     return (
-        <>
-            <MenuItem
-                ref={ref}
-                className={classes.menuItem}
-                onClick={e => {
-                    setLocale(locale === 'en' ? 'fr' : 'en');
-                    props.onClick(e);
-                }}
-            >
-                <ListItemIcon className={classes.icon}>
-                    <Language />
-                </ListItemIcon>
-                Switch Language
-            </MenuItem>
-            <Menu>
-                <Menu.Button>More</Menu.Button>
-                <Menu.Items>
-                    <Menu.Item>
-                        {({ active }) => (
-                            <a
-                                className={`${active && 'bg-blue-500'}`}
-                                href="/account-settings"
-                            >
-                                Account settings
-                            </a>
-                        )}
-                    </Menu.Item>
-                    <Menu.Item>
-                        {({ active }) => (
-                            <a
-                                className={`${active && 'bg-blue-500'}`}
-                                href="/account-settings"
-                            >
-                                Documentation
-                            </a>
-                        )}
-                    </Menu.Item>
-                    <Menu.Item disabled>
-                        <span className="opacity-75">
-                            Invite a friend (coming soon!)
-                        </span>
-                    </Menu.Item>
-                    <p className="text-red-500">test text</p>
-                </Menu.Items>
-            </Menu>
-        </>
+        <MenuItem
+            ref={ref}
+            className={classes.menuItem}
+            onClick={e => {
+                setLocale(locale === 'en' ? 'fr' : 'en');
+                props.onClick(e);
+            }}
+        >
+            <ListItemIcon className={classes.icon}>
+                <Language />
+            </ListItemIcon>
+            Switch Language
+        </MenuItem>
     );
 });
 
