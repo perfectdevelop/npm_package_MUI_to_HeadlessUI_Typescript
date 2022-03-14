@@ -82,27 +82,6 @@ export interface LoginProps
 
 const useStyles = makeStyles(
     (theme: Theme) => ({
-        main: {
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100vh',
-            height: '1px',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundImage:
-                'radial-gradient(circle at 50% 14em, #313264 0%, #00023b 60%, #00023b 100%)',
-        },
-        card: {
-            minWidth: 300,
-            marginTop: '6em',
-        },
-        avatar: {
-            margin: '1em',
-            display: 'flex',
-            justifyContent: 'center',
-        },
         icon: {
             backgroundColor: theme.palette.secondary[500],
         },
@@ -164,15 +143,15 @@ const LoginView: React.FunctionComponent<Omit<LoginProps, 'theme'>> = props => {
     return (
         <div
             className={classnames(
-                'flex min-h-full h-1 items-center justify-self-start bg-no-repeat bg-cover bg-red-300',
+                'flex flex-col min-h-full h-px align-center justify-self-start bg-no-repeat bg-cover',
                 className
             )}
             {...rest}
             ref={containerRef}
         >
-            <Card className={classes.card}>
-                <div className={classes.avatar}>
-                    <Avatar className={classes.icon}>
+            <Card className="card mt-24">
+                <div className="m-4 flex justify-center">
+                    <Avatar className="icon">
                         <LockIcon />
                     </Avatar>
                 </div>
