@@ -2,9 +2,7 @@ import * as React from 'react';
 import { Fragment, useState, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import ActionDelete from '@material-ui/icons/Delete';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
 import inflection from 'inflection';
-import { makeStyles } from '@material-ui/core/styles';
 import {
     useTranslate,
     useDeleteMany,
@@ -18,22 +16,6 @@ import {
 import Confirm from '../layout/Confirm';
 import Button, { ButtonProps } from './Button';
 import { BulkActionProps } from '../types';
-
-const useStyles = makeStyles(
-    theme => ({
-        deleteButton: {
-            color: theme.palette.error.main,
-            '&:hover': {
-                backgroundColor: alpha(theme.palette.error.main, 0.12),
-                // Reset on mouse devices
-                '@media (hover: none)': {
-                    backgroundColor: 'transparent',
-                },
-            },
-        },
-    }),
-    { name: 'RaBulkDeleteWithConfirmButton' }
-);
 
 const defaultIcon = <ActionDelete />;
 
@@ -52,7 +34,6 @@ const BulkDeleteWithConfirmButton = (
         ...rest
     } = props;
     const [isOpen, setOpen] = useState(false);
-    const classes = useStyles(props);
     const notify = useNotify();
     const unselectAll = useUnselectAll();
     const refresh = useRefresh();
@@ -111,7 +92,7 @@ const BulkDeleteWithConfirmButton = (
             <Button
                 onClick={handleClick}
                 label={label}
-                className={classes.deleteButton}
+                className="text-red-500 hover:bg-red-300"
                 {...sanitizeRestProps(rest)}
             >
                 {icon}
