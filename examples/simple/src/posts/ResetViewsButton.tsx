@@ -55,3 +55,6 @@ ResetViewsButton.propTypes = {
 };
 
 export default ResetViewsButton;
+
+
+

@@ -163,7 +163,10 @@ const LoginView: React.FunctionComponent<Omit<LoginProps, 'theme'>> = props => {
 
     return (
         <div
-            className={classnames(classes.main, className)}
+            className={classnames(
+                'flex min-h-full h-1 items-center justify-self-start bg-no-repeat bg-cover bg-red-300',
+                className
+            )}
             {...rest}
             ref={containerRef}
         >
