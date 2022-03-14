@@ -60,6 +60,7 @@ const SwitchLanguage = forwardRef((props: MenuItemProps, ref) => {
                             Invite a friend (coming soon!)
                         </span>
                     </Menu.Item>
+                    <p className="text-red-500">test text</p>
                 </Menu.Items>
             </Menu>
         </>

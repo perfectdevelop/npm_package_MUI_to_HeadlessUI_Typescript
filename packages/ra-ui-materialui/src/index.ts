@@ -1,5 +1,6 @@
 import Link from './Link';
 import defaultTheme, { RaThemeOptions, RaThemeOverrides } from './defaultTheme';
+import './index.css';
 
 export * from './auth';
 export * from './button';
