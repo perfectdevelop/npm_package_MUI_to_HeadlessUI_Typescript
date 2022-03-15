@@ -38,7 +38,6 @@ const FileField = (props: FileFieldProps) => {
     } = props;
     const record = useRecordContext(props);
     const sourceValue = get(record, source);
-    const classes = useStyles(props);
 
     if (!sourceValue) {
         return emptyText ? (
@@ -52,7 +51,7 @@ const FileField = (props: FileFieldProps) => {
             </Typography>
         ) : (
             <div
-                className={classnames(classes.root, className)}
+                className={classnames('inline-block', className)}
                 {...sanitizeFieldRestProps(rest)}
             />
         );
@@ -61,7 +60,7 @@ const FileField = (props: FileFieldProps) => {
     if (Array.isArray(sourceValue)) {
         return (
             <ul
-                className={classnames(classes.root, className)}
+                className={classnames('inline-block', className)}
                 {...sanitizeFieldRestProps(rest)}
             >
                 {sourceValue.map((file, index) => {
@@ -91,7 +90,7 @@ const FileField = (props: FileFieldProps) => {
 
     return (
         <div
-            className={classnames(classes.root, className)}
+            className={classnames('inline-block', className)}
             {...sanitizeFieldRestProps(rest)}
         >
             <a
@@ -111,13 +110,6 @@ const FileField = (props: FileFieldProps) => {
 FileField.defaultProps = {
     addLabel: true,
 };
-
-const useStyles = makeStyles(
-    {
-        root: { display: 'inline-block' },
-    },
-    { name: 'RaFileField' }
-);
 
 export interface FileFieldProps extends PublicFieldProps, InjectedFieldProps {
     src?: string;

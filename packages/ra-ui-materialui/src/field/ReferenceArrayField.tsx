@@ -189,7 +189,7 @@ export const ReferenceArrayFieldView: FC<ReferenceArrayFieldViewProps> = props =
     const { loaded } = useListContext(props);
 
     if (!loaded) {
-        return <LinearProgress className={classes.progress} />;
+        return <LinearProgress className="mt-2" />;
     }
 
     return (

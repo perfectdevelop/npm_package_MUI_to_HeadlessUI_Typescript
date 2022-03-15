@@ -7,23 +7,11 @@ import classnames from 'classnames';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import { Tooltip, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { TypographyProps } from '@material-ui/core/Typography';
 import { useTranslate, useRecordContext } from 'ra-core';
 
 import { PublicFieldProps, InjectedFieldProps, fieldPropTypes } from './types';
 import sanitizeFieldRestProps from './sanitizeFieldRestProps';
-
-const useStyles = makeStyles(
-    {
-        root: {
-            display: 'flex',
-        },
-    },
-    {
-        name: 'RaBooleanField',
-    }
-);
 
 const BooleanField: FC<BooleanFieldProps> = memo(props => {
     const {
@@ -54,7 +42,7 @@ const BooleanField: FC<BooleanFieldProps> = memo(props => {
             <Typography
                 component="span"
                 variant="body2"
-                className={classnames(classes.root, className)}
+                className={classnames("flex", className)}
                 {...sanitizeFieldRestProps(rest)}
             >
                 <Tooltip title={translate(ariaLabel, { _: ariaLabel })}>

@@ -36,7 +36,7 @@ export const TranslatableFieldsTabContent = (
             hidden={selectedLocale !== locale}
             id={`translatable-content-${groupKey}${locale}`}
             aria-labelledby={`translatable-header-${groupKey}${locale}`}
-            className={classes.root}
+            className="rounded-bl grow p-2 rounded-br border-solid bordr-gray-500 border-t-0"
             {...other}
         >
             {Children.map(children, field =>
@@ -89,15 +89,7 @@ export type TranslatableFieldsTabContentProps = {
 
 const useStyles = makeStyles(
     theme => ({
-        root: {
-            flexGrow: 1,
-            padding: theme.spacing(2),
-            borderRadius: 0,
-            borderBottomLeftRadius: theme.shape.borderRadius,
-            borderBottomRightRadius: theme.shape.borderRadius,
-            border: `1px solid ${theme.palette.divider}`,
-            borderTop: 0,
-        },
+        root: {},
     }),
     { name: 'RaTranslatableFieldsTabContent' }
 );

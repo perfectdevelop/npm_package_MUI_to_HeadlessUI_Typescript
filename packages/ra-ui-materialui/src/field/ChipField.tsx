@@ -3,19 +3,11 @@ import { memo, FC } from 'react';
 import get from 'lodash/get';
 import Chip, { ChipProps } from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import { useRecordContext } from 'ra-core';
 
 import sanitizeFieldRestProps from './sanitizeFieldRestProps';
 import { PublicFieldProps, InjectedFieldProps, fieldPropTypes } from './types';
-
-const useStyles = makeStyles(
-    {
-        chip: { margin: 4, cursor: 'inherit' },
-    },
-    { name: 'RaChipField' }
-);
 
 export const ChipField: FC<ChipFieldProps> = memo(props => {
     const {
@@ -26,7 +18,6 @@ export const ChipField: FC<ChipFieldProps> = memo(props => {
         ...rest
     } = props;
     const record = useRecordContext(props);
-    const classes = useStyles(props);
     const value = get(record, source);
 
     if (value == null && emptyText) {
@@ -44,7 +35,7 @@ export const ChipField: FC<ChipFieldProps> = memo(props => {
 
     return (
         <Chip
-            className={classnames(classes.chip, className)}
+            className={classnames('m-1 cursor-inherit', className)}
             label={value}
             {...sanitizeFieldRestProps(rest)}
         />

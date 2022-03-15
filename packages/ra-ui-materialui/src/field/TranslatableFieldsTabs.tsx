@@ -23,7 +23,11 @@ export const TranslatableFieldsTabs = (
     };
 
     return (
-        <AppBar color="default" position="static" className={classes.root}>
+        <AppBar
+            color="default"
+            position="static"
+            className="shadow-none border-0 rounded-tl rounded-tr border-solid border"
+        >
             <Tabs
                 value={selectedLocale}
                 onChange={handleChange}
@@ -51,13 +55,7 @@ export interface TranslatableFieldsTabsProps {
 
 const useStyles = makeStyles(
     theme => ({
-        root: {
-            boxShadow: 'none',
-            borderRadius: 0,
-            borderTopLeftRadius: theme.shape.borderRadius,
-            borderTopRightRadius: theme.shape.borderRadius,
-            border: `1px solid ${theme.palette.divider}`,
-        },
+        root: {},
     }),
     { name: 'RaTranslatableFieldsTabs' }
 );

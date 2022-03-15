@@ -83,7 +83,7 @@ export const TranslatableFields = (
     const classes = useStyles(props);
 
     return (
-        <div className={classes.root}>
+        <div className="grow-1 mt-1 mb-0.5">
             <TranslatableContextProvider value={context}>
                 {selector}
                 {locales.map(locale => (
@@ -115,11 +115,7 @@ export interface TranslatableFieldsProps extends UseTranslatableOptions {
 
 const useStyles = makeStyles(
     theme => ({
-        root: {
-            flexGrow: 1,
-            marginTop: theme.spacing(1),
-            marginBottom: theme.spacing(0.5),
-        },
+        root: {},
     }),
     { name: 'RaTranslatableFields' }
 );
