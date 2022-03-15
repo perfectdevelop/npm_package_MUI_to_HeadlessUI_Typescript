@@ -68,12 +68,8 @@ export const ShowView = (props: ShowViewProps) => {
                     //  Ensure we don't override any user provided props
                     ...finalActions.props,
                 })}
-            <div
-                className={classnames(classes.main, {
-                    [classes.noActions]: !finalActions,
-                })}
-            >
-                <Content className={classes.card}>
+            <div className="flex">
+                <Content className="flex">
                     {record &&
                         cloneElement(Children.only(children), {
                             resource,
@@ -122,23 +118,6 @@ ShowView.defaultProps = {
     classes: {},
     component: Card,
 };
-
-const useStyles = makeStyles(
-    {
-        root: {},
-        main: {
-            display: 'flex',
-        },
-        noActions: {
-            marginTop: '1em',
-        },
-        card: {
-            flex: '1 1 auto',
-        },
-    },
-    { name: 'RaShow' }
-);
-
 const sanitizeRestProps = ({
     basePath = null,
     defaultTitle = null,

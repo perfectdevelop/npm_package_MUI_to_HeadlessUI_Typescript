@@ -32,17 +32,6 @@ const sanitizeRestProps = ({
     ...rest
 }: any) => rest;
 
-const useStyles = makeStyles(
-    theme => ({
-        content: {
-            paddingTop: theme.spacing(1),
-            paddingLeft: theme.spacing(2),
-            paddingRight: theme.spacing(2),
-        },
-    }),
-    { name: 'RaTabbedShowLayout' }
-);
-
 /**
  * Tabbed Layout for a Show view, showing fields grouped in tabs.
  *
@@ -122,7 +111,7 @@ export const TabbedShowLayout = (props: TabbedShowLayoutProps) => {
             )}
 
             <Divider />
-            <div className={classes.content}>
+            <div className="pt-1 pl-2 pr-2">
                 {Children.map(nonNullChildren, (tab, index) =>
                     tab && isValidElement(tab) ? (
                         syncWithLocation ? (

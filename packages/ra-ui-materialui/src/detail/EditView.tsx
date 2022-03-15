@@ -3,7 +3,6 @@ import { Children, cloneElement, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import {
     EditControllerProps,
@@ -29,8 +28,6 @@ export const EditView = (props: EditViewProps) => {
         ...rest
     } = props;
 
-    const classes = useStyles(props);
-
     const {
         basePath,
         defaultTitle,
@@ -55,7 +52,7 @@ export const EditView = (props: EditViewProps) => {
     }
     return (
         <div
-            className={classnames('edit-page', classes.root, className)}
+            className={classnames('edit-page', className)}
             {...sanitizeRestProps(rest)}
         >
             <TitleForRecord
@@ -73,12 +70,8 @@ export const EditView = (props: EditViewProps) => {
                     //  Ensure we don't override any user provided props
                     ...finalActions.props,
                 })}
-            <div
-                className={classnames(classes.main, {
-                    [classes.noActions]: !finalActions,
-                })}
-            >
-                <Content className={classes.card}>
+            <div className="flex">
+                <Content className="flex">
                     {record ? (
                         cloneElement(Children.only(children), {
                             basePath,
@@ -154,22 +147,6 @@ EditView.defaultProps = {
     classes: {},
     component: Card,
 };
-
-const useStyles = makeStyles(
-    {
-        root: {},
-        main: {
-            display: 'flex',
-        },
-        noActions: {
-            marginTop: '1em',
-        },
-        card: {
-            flex: '1 1 auto',
-        },
-    },
-    { name: 'RaEdit' }
-);
 
 const sanitizeRestProps = ({
     basePath = null,

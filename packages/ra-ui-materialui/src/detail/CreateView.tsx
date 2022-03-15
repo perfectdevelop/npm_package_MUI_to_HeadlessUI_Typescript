@@ -3,7 +3,6 @@ import { Children, cloneElement, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import { CreateControllerProps, useCreateContext } from 'ra-core';
 import { Card } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import { CreateProps } from '../types';
 import { TitleForRecord } from '../layout';
@@ -19,8 +18,6 @@ export const CreateView = (props: CreateViewProps) => {
         title,
         ...rest
     } = props;
-
-    const classes = useStyles(props);
 
     const {
         basePath,
@@ -53,11 +50,11 @@ export const CreateView = (props: CreateViewProps) => {
                     ...actions.props,
                 })}
             <div
-                className={classnames(classes.main, {
+                className={classnames('flex', {
                     [classes.noActions]: !actions,
                 })}
             >
-                <Content className={classes.card}>
+                <Content className="flex">
                     {cloneElement(Children.only(children), {
                         basePath,
                         record,
@@ -123,24 +120,6 @@ CreateView.defaultProps = {
     classes: {},
     component: Card,
 };
-
-const useStyles = makeStyles(
-    theme => ({
-        root: {},
-        main: {
-            display: 'flex',
-        },
-        noActions: {
-            [theme.breakpoints.up('sm')]: {
-                marginTop: '1em',
-            },
-        },
-        card: {
-            flex: '1 1 auto',
-        },
-    }),
-    { name: 'RaCreate' }
-);
 
 const sanitizeRestProps = ({
     basePath = null,
