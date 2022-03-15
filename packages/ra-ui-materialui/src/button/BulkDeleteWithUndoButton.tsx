@@ -2,8 +2,6 @@ import * as React from 'react';
 import { ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import ActionDelete from '@material-ui/icons/Delete';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
-import { makeStyles } from '@material-ui/core/styles';
 import {
     useDeleteMany,
     useRefresh,
@@ -17,22 +15,6 @@ import {
 import Button, { ButtonProps } from './Button';
 import { BulkActionProps } from '../types';
 
-const useStyles = makeStyles(
-    theme => ({
-        deleteButton: {
-            color: theme.palette.error.main,
-            '&:hover': {
-                backgroundColor: alpha(theme.palette.error.main, 0.12),
-                // Reset on mouse devices
-                '@media (hover: none)': {
-                    backgroundColor: 'transparent',
-                },
-            },
-        },
-    }),
-    { name: 'RaBulkDeleteWithUndoButton' }
-);
-
 const BulkDeleteWithUndoButton = (props: BulkDeleteWithUndoButtonProps) => {
     const {
         basePath,
@@ -43,7 +25,6 @@ const BulkDeleteWithUndoButton = (props: BulkDeleteWithUndoButtonProps) => {
         ...rest
     } = props;
     const { selectedIds } = useListContext(props);
-    const classes = useStyles(props);
     const notify = useNotify();
     const unselectAll = useUnselectAll();
     const refresh = useRefresh();
@@ -92,7 +73,7 @@ const BulkDeleteWithUndoButton = (props: BulkDeleteWithUndoButtonProps) => {
         <Button
             onClick={handleClick}
             label={label}
-            className={classes.deleteButton}
+            className="text-red-500 hover:bg-red-300"
             disabled={loading}
             {...sanitizeRestProps(rest)}
         >

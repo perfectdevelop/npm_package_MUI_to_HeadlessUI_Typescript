@@ -21,6 +21,7 @@ import ShowButton, { ShowButtonProps } from './ShowButton';
 import SortButton, { SortButtonProps } from './SortButton';
 import RefreshButton, { RefreshButtonProps } from './RefreshButton';
 import RefreshIconButton, { RefreshIconButtonProps } from './RefreshIconButton';
+import '../index.css';
 
 export * from './DeleteButton';
 export * from './DeleteWithConfirmButton';

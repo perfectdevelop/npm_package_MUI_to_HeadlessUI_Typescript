@@ -2,9 +2,7 @@ import * as React from 'react';
 import { Fragment, useState, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import ActionUpdate from '@material-ui/icons/Update';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
 import inflection from 'inflection';
-import { makeStyles } from '@material-ui/core/styles';
 import {
     useTranslate,
     useUpdateMany,
@@ -19,22 +17,6 @@ import {
 import Confirm from '../layout/Confirm';
 import Button, { ButtonProps } from './Button';
 import { BulkActionProps } from '../types';
-
-const useStyles = makeStyles(
-    theme => ({
-        updateButton: {
-            color: theme.palette.primary.main,
-            '&:hover': {
-                backgroundColor: alpha(theme.palette.primary.main, 0.12),
-                // Reset on mouse devices
-                '@media (hover: none)': {
-                    backgroundColor: 'transparent',
-                },
-            },
-        },
-    }),
-    { name: 'RaBulkUpdateWithConfirmButton' }
-);
 
 const defaultIcon = <ActionUpdate />;
 
@@ -124,7 +106,7 @@ const BulkUpdateWithConfirmButton = (
             <Button
                 onClick={handleClick}
                 label={label}
-                className={classes.updateButton}
+                className="text-red-500 hover:bg-red-300"
                 {...sanitizeRestProps(rest)}
             >
                 {icon}

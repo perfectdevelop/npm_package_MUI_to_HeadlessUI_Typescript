@@ -2,8 +2,6 @@ import * as React from 'react';
 import { ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import ActionUpdate from '@material-ui/icons/Update';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
-import { makeStyles } from '@material-ui/core/styles';
 import {
     useUpdateMany,
     useRefresh,
@@ -16,23 +14,6 @@ import {
 
 import Button, { ButtonProps } from './Button';
 import { BulkActionProps } from '../types';
-
-const useStyles = makeStyles(
-    theme => ({
-        updateButton: {
-            color: theme.palette.primary.main,
-            '&:hover': {
-                backgroundColor: alpha(theme.palette.primary.main, 0.12),
-                // Reset on mouse devices
-                '@media (hover: none)': {
-                    backgroundColor: 'transparent',
-                },
-            },
-        },
-    }),
-    { name: 'RaBulkUpdateWithUndoButton' }
-);
-
 const BulkUpdateWithUndoButton = (props: BulkUpdateWithUndoButtonProps) => {
     const { selectedIds } = useListContext(props);
     const classes = useStyles(props);
@@ -102,7 +83,7 @@ const BulkUpdateWithUndoButton = (props: BulkUpdateWithUndoButtonProps) => {
         <Button
             onClick={handleClick}
             label={label}
-            className={classes.updateButton}
+            className="text-red-500 hover:bg-red-300"
             disabled={loading}
             {...sanitizeRestProps(rest)}
         >

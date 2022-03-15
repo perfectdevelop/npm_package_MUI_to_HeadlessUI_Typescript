@@ -5,8 +5,6 @@ import React, {
     SyntheticEvent,
 } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
 import ActionDelete from '@material-ui/icons/Delete';
 import classnames from 'classnames';
 import inflection from 'inflection';
@@ -46,7 +44,6 @@ export const DeleteWithConfirmButton = (
         ...rest
     } = props;
     const translate = useTranslate();
-    const classes = useStyles(props);
     const resource = useResourceContext(props);
     const mode = getMutationMode(mutationMode, undoable);
 
@@ -74,7 +71,7 @@ export const DeleteWithConfirmButton = (
                 label={label}
                 className={classnames(
                     'ra-delete-button',
-                    classes.deleteButton,
+                    'text-red-500 hover:bg-red-300',
                     className
                 )}
                 key="button"
@@ -108,22 +105,6 @@ export const DeleteWithConfirmButton = (
 };
 
 const defaultIcon = <ActionDelete />;
-
-const useStyles = makeStyles(
-    theme => ({
-        deleteButton: {
-            color: theme.palette.error.main,
-            '&:hover': {
-                backgroundColor: alpha(theme.palette.error.main, 0.12),
-                // Reset on mouse devices
-                '@media (hover: none)': {
-                    backgroundColor: 'transparent',
-                },
-            },
-        },
-    }),
-    { name: 'RaDeleteWithConfirmButton' }
-);
 
 interface Props {
     basePath?: string;

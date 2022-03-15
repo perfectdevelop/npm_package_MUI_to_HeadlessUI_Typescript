@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { ReactElement, ReactEventHandler, SyntheticEvent } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
 import ActionDelete from '@material-ui/icons/Delete';
 import classnames from 'classnames';
 import {
@@ -30,7 +28,6 @@ export const DeleteWithUndoButton = (props: DeleteWithUndoButtonProps) => {
         onFailure,
         ...rest
     } = props;
-    const classes = useStyles(props);
     const resource = useResourceContext(props);
     const { loading, handleDelete } = useDeleteWithUndoController({
         record,
@@ -49,7 +46,7 @@ export const DeleteWithUndoButton = (props: DeleteWithUndoButtonProps) => {
             label={label}
             className={classnames(
                 'ra-delete-button',
-                classes.deleteButton,
+                'text-red-500 hover:bg-red-300',
                 className
             )}
             key="button"
@@ -59,23 +56,6 @@ export const DeleteWithUndoButton = (props: DeleteWithUndoButtonProps) => {
         </Button>
     );
 };
-
-const useStyles = makeStyles(
-    theme => ({
-        deleteButton: {
-            color: theme.palette.error.main,
-            '&:hover': {
-                backgroundColor: alpha(theme.palette.error.main, 0.12),
-                // Reset on mouse devices
-                '@media (hover: none)': {
-                    backgroundColor: 'transparent',
-                },
-            },
-        },
-    }),
-    { name: 'RaDeleteWithUndoButton' }
-);
-
 interface Props {
     basePath?: string;
     classes?: object;

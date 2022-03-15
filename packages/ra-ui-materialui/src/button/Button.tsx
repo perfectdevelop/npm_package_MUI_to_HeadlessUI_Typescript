@@ -71,7 +71,7 @@ const Button = (props: ButtonProps) => {
         )
     ) : (
         <MuiButton
-            className={classnames(classes.button, className)}
+            className={classnames('inline-flex items-center', className)}
             color={color}
             size={size}
             aria-label={label ? translate(label, { _: label }) : undefined}

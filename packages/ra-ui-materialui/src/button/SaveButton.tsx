@@ -2,7 +2,6 @@ import React, { cloneElement, ReactElement, SyntheticEvent } from 'react';
 import PropTypes from 'prop-types';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { makeStyles } from '@material-ui/core/styles';
 import ContentSave from '@material-ui/icons/Save';
 import classnames from 'classnames';
 import {
@@ -78,7 +77,6 @@ const SaveButton = (props: SaveButtonProps) => {
         transform,
         ...rest
     } = props;
-    const classes = useStyles(props);
     const notify = useNotify();
     const translate = useTranslate();
     const formContext = useFormContext();
@@ -147,7 +145,7 @@ const SaveButton = (props: SaveButtonProps) => {
     const displayedLabel = label && translate(label, { _: label });
     return (
         <Button
-            className={classnames(classes.button, className)}
+            className={classnames('relative', className)}
             variant={variant}
             type={type}
             onClick={handleClick}
@@ -157,14 +155,10 @@ const SaveButton = (props: SaveButtonProps) => {
             {...sanitizeButtonRestProps(rest)}
         >
             {saving ? (
-                <CircularProgress
-                    size={18}
-                    thickness={2}
-                    className={classes.leftIcon}
-                />
+                <CircularProgress size={18} thickness={2} className="mr-1" />
             ) : (
                 cloneElement(icon, {
-                    className: classnames(classes.leftIcon, classes.icon),
+                    className: 'mr-1 text-xs',
                 })
             )}
             {displayedLabel}
@@ -173,21 +167,6 @@ const SaveButton = (props: SaveButtonProps) => {
 };
 
 const defaultIcon = <ContentSave />;
-
-const useStyles = makeStyles(
-    theme => ({
-        button: {
-            position: 'relative',
-        },
-        leftIcon: {
-            marginRight: theme.spacing(1),
-        },
-        icon: {
-            fontSize: 18,
-        },
-    }),
-    { name: 'RaSaveButton' }
-);
 
 interface Props {
     classes?: object;
